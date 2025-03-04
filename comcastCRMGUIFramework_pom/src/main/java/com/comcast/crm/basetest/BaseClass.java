@@ -42,12 +42,13 @@ public class BaseClass {
 		dbLib.getDBConnection();
 	}
 	
-	//@Parameters("BROWSER")
+	@Parameters("BROWSER")
 	@BeforeClass(alwaysRun = true)
-	public void configBC() throws IOException
+	public void configBC(String browser) throws IOException
 	{
 		System.out.println("=====Launch the BROWSER=====");
-		String BROWSER =System.getProperty("browser", fLib.getDataFromPropertiesFile("browser"));
+		String BROWSER = browser;
+				//System.getProperty("browser", fLib.getDataFromPropertiesFile("browser"));
 				
 		String URL =System.getProperty("url", fLib.getDataFromPropertiesFile("url"));
 		if(BROWSER.equals("firefox")) {
