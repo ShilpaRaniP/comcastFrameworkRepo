@@ -42,14 +42,14 @@ public class BaseClass {
 		dbLib.getDBConnection();
 	}
 	
-	@Parameters("BROWSER")
+	//@Parameters("BROWSER")
 	@BeforeClass(alwaysRun = true)
-	public void configBC(String browser) throws IOException
+	public void configBC() throws IOException
 	{
 		System.out.println("=====Launch the BROWSER=====");
-		String BROWSER = browser;
-				//fLib.getDataFromPropertiesFile("browser");
-		String URL = fLib.getDataFromPropertiesFile("url");
+		String BROWSER =System.getProperty("browser", fLib.getDataFromPropertiesFile("browser"));
+				
+		String URL =System.getProperty("url", fLib.getDataFromPropertiesFile("url"));
 		if(BROWSER.equals("firefox")) {
 			driver=new FirefoxDriver();
 		}	
@@ -73,8 +73,8 @@ public class BaseClass {
 	public void configBM() throws IOException
 	{
 		System.out.println("=====lOGIN=====");
-		String USERNAME = fLib.getDataFromPropertiesFile("username");
-		String PASSWORD = fLib.getDataFromPropertiesFile("password");
+		String USERNAME = System.getProperty("username",fLib.getDataFromPropertiesFile("username"));
+		String PASSWORD = System.getProperty("password",fLib.getDataFromPropertiesFile("password"));
 		
 		LoginPage lp=new LoginPage(driver);
 		lp.loginToApp(USERNAME, PASSWORD);

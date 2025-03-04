@@ -9,8 +9,8 @@
 </groups>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.comcast.crm.orgtest.CreateOrgTest_testng"/>
-      <class name="com.comcast.crm.contacttest.CreateContactTest_testng"/>
+      <class name="com.comcast.crm.orgtest.CreateOrg_testngTest"/>
+      <class name="com.comcast.crm.contacttest.CreateContact_testngTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

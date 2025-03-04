@@ -22,7 +22,7 @@ import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
 
 public class ListImpClass implements ITestListener, ISuiteListener {
 	public static ExtentReports report;
-
+	public ExtentSparkReporter spark;
 	public static ExtentTest test;
 
 	@Override
@@ -76,6 +76,7 @@ public class ListImpClass implements ITestListener, ISuiteListener {
 		UtilityClassObject.getTest().addScreenCaptureFromBase64String(filePath, testName + "_" + time);
 		UtilityClassObject.getTest().log(Status.FAIL, result.getMethod().getMethodName() + "====> FAILED <====");
 		UtilityClassObject.getTest().info(MarkupHelper.createLabel("====> FAILED <=====", ExtentColor.RED));
+		UtilityClassObject.getTest().log(Status.FAIL,result.getThrowable() );   //to get the exception in report
 	}
 
 	@Override
